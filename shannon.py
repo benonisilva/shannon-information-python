@@ -34,7 +34,7 @@ chart = multiBarChart( color_category = 'category20c', width=900, height=600, x_
 chart.set_containerheader("\n\n<h2>" + type + "\n\n<img src='https://plus.maths.org/MI/56c09cb543ec31341504b1627e490cb7/images/img-0008.png' /> <br> Baseado na frequencia de ocorrencia cada Letra</h2>\n\n")
 # Isso cria o html do grafico
 
-#esses sao os dados
+#esses sao os dados - letters in lowecase ascii
 xdata = ascii_lowercase
 # source http://docente.ifrn.edu.br/paulomartins/livros-classicos-de-literatura/dom-casmurro-de-machado-de-assis.-pdf/at_download/file
 # to txt
@@ -45,7 +45,7 @@ ydata_pt_br = array_of_distribution_letters(pt_br)
 ydata_en_us = array_of_distribution_letters(en_us)
 # end dados
 
-# coloca os dados no grafico
+# coloca os dados no grafico - create visualization
 extra_serie = {"tooltip": {"y_start": "", "y_end": " total"}}
 chart.add_serie(name="informacao por simbolo. Machado", y=ydata_pt_br, x=xdata, extra=extra_serie)
 chart.add_serie(name="informacao por simbolo. Shakeaspear", y=ydata_en_us, x=xdata, extra=extra_serie)
