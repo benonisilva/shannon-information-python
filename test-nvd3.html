@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+    </head>
+    <body>
+        
+    
+
+<h2>Calculo: informacao por simbolo
+
+<img src='https://plus.maths.org/MI/56c09cb543ec31341504b1627e490cb7/images/img-0008.png' /> <br> Baseado na frequencia de ocorrencia cada Letra</h2>
+
+<div id="multibarchart"><svg style="width:900px;height:600px;"></svg></div>
+
+
+    <script>
+
+
+
+        data_multibarchart=[{"values": [{"y": 0.3925609734367805, "x": "a"}, {"y": 0.06278162174499985, "x": "b"}, {"y": 0.16351119015254442, "x": "c"}, {"y": 0.21076245826607476, "x": "d"}, {"y": 0.37884047040413504, "x": "e"}, {"y": 0.06659670910615116, "x": "f"}, {"y": 0.07251978913647168, "x": "g"}, {"y": 0.08506526622046115, "x": "h"}, {"y": 0.25220826032473465, "x": "i"}, {"y": 0.028012277049642115, "x": "j"}, {"y": 0.0001764649552405766, "x": "k"}, {"y": 0.14345630833668818, "x": "l"}, {"y": 0.22809468750585835, "x": "m"}, {"y": 0.21680010549344148, "x": "n"}, {"y": 0.3397542951876929, "x": "o"}, {"y": 0.1441196725751442, "x": "p"}, {"y": 0.09122531238438665, "x": "q"}, {"y": 0.25094007729168144, "x": "r"}, {"y": 0.29341725770452387, "x": "s"}, {"y": 0.19566139511141417, "x": "t"}, {"y": 0.21646229840661171, "x": "u"}, {"y": 0.10323089766689168, "x": "v"}, {"y": 0.014124396620486878, "x": "w"}, {"y": 0.024267780237527802, "x": "x"}, {"y": 0.00012181050445630423, "x": "y"}, {"y": 0.03642393933376994, "x": "z"}], "key": "informacao por simbolo. Machado", "yAxis": "1"}, {"values": [{"y": 0.2830946551441525, "x": "a"}, {"y": 0.09704145535531124, "x": "b"}, {"y": 0.1264461380062455, "x": "c"}, {"y": 0.18385360836850895, "x": "d"}, {"y": 0.36376028828302576, "x": "e"}, {"y": 0.11809160590864035, "x": "f"}, {"y": 0.10443900071492955, "x": "g"}, {"y": 0.24970005007885832, "x": "h"}, {"y": 0.26134429944252197, "x": "i"}, {"y": 0.012275753680591639, "x": "j"}, {"y": 0.06299025594354828, "x": "k"}, {"y": 0.2007105643169335, "x": "l"}, {"y": 0.14950769366760386, "x": "m"}, {"y": 0.25426429568056025, "x": "n"}, {"y": 0.29804175662752586, "x": "o"}, {"y": 0.09307496146238264, "x": "p"}, {"y": 0.009488540833835608, "x": "q"}, {"y": 0.25076777993419636, "x": "r"}, {"y": 0.2578716705345403, "x": "s"}, {"y": 0.30654204771998417, "x": "t"}, {"y": 0.16589507638937218, "x": "u"}, {"y": 0.06591785100382783, "x": "v"}, {"y": 0.1274200913058221, "x": "w"}, {"y": 0.013194172438610534, "x": "x"}, {"y": 0.13259001967227899, "x": "y"}, {"y": 0.004793058377159606, "x": "z"}], "key": "informacao por simbolo. Shakeaspear", "yAxis": "1"}];
+
+    nv.addGraph(function() {
+        var chart = nv.models.multiBarChart();
+
+        chart.margin({top: 30, right: 60, bottom: 20, left: 60});
+
+        var datum = data_multibarchart;
+
+        chart.color(d3.scale.category20c().range());
+
+
+
+
+            chart.yAxis
+                .tickFormat(d3.format(',.2f'));
+
+                    chart.tooltipContent(function(key, y, e, graph) {
+                        var x = String(graph.point.x);
+                        var y = String(graph.point.y);
+                                            if(key == 'informacao por simbolo. Machado'){
+                        var y =  String(graph.point.y)  + ' total';
+                    }
+                    if(key == 'informacao por simbolo. Shakeaspear'){
+                        var y =  String(graph.point.y)  + ' total';
+                    }
+
+                        tooltip_str = '<center><b>'+key+'</b></center>' + y + ' at ' + x;
+                        return tooltip_str;
+                    });
+
+      chart.showLegend(true);
+
+
+
+        
+
+
+        d3.select('#multibarchart svg')
+            .datum(datum)
+            .transition().duration(500)
+            .attr('width', 900)
+            .attr('height', 600)
+            .call(chart);
+
+
+    });
+
+
+
+
+    </script>
+
+    </body>
+</html>
